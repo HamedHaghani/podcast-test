@@ -1,5 +1,7 @@
 name: Generate Podcast Feeds
+
 on: [push]
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,5 +18,8 @@ jobs:
           echo "Docker version:"
           docker --version
 
-      - name: Run the action
-        uses: ./  # or ./path/to/action if not at repo root
+      - name: Run Podcast Generator Action
+        uses: HamedHaghani/podcast-generator@main
+        with:
+          email: ${{ github.actor }}@users.noreply.github.com
+          name: ${{ github.actor }}
